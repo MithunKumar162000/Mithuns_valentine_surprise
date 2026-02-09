@@ -1,203 +1,75 @@
 <!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sneha❤️</title>
-  <style>
-    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-    body {
-      margin: 0; height: 100vh; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    }/* Heart rain */
-.heart {
-  position: fixed; top: -10px;
-  color: rgba(255, 0, 90, 0.75);
-  animation: fall linear infinite;
-  pointer-events: none;
-}
-@keyframes fall { to { transform: translateY(110vh); } }
-
-.card {
-  background: rgba(255,255,255,0.94);
-  padding: 34px 44px;
-  border-radius: 26px;
-  text-align: center;
-  box-shadow: 0 30px 70px rgba(0,0,0,0.3);
-  max-width: 460px;
-  position: relative;
-  z-index: 2;
-}
-
-h1 { color: #e6005c; margin-bottom: 10px; }
-h2 { color: #ff3366; }
-p { color: #444; line-height: 1.5; }
-
-.name {
-  font-size: 28px;
-  font-weight: 700;
-  color: #ff3366;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-@keyframes glow {
-  from { text-shadow: 0 0 10px #ff9abf; }
-  to { text-shadow: 0 0 25px #ff3366; }
-}
-
-.buttons { margin-top: 30px; position: relative; height: 120px; }
-button {
-  padding: 15px 36px;
-  border: none; border-radius: 40px;
-  font-size: 18px; cursor: pointer;
-  transition: all 0.35s ease;
-  position: absolute;
-}
-#yes {
-  background: #ff3366; color: white;
-  left: 50%; transform: translateX(-50%);
-  z-index: 5;
-}
-#no {
-  background: #aaa; color: white;
-  left: 50%; top: 70px;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-/* Gallery / Story */
-#gallery {
-  display: none; text-align: center;
-  animation: fadeIn 1.2s ease;
-}
-@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-
-.story {
-  display: flex;
-  overflow-x: auto;
-  gap: 18px;
-  padding: 10px;
-  scroll-snap-type: x mandatory;
-}
-
-.story-item {
-  min-width: 260px;
-  background: white;
-  border-radius: 22px;
-  padding: 12px;
-  scroll-snap-align: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
-  animation: float 4s ease-in-out infinite;
-}
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.story-item img {
-  width: 100%; border-radius: 16px;
-}
-
-.gif {
-  width: 180px;
-  margin: 20px auto;
-}
-
-.firework {
-  position: fixed;
-  width: 6px; height: 6px;
-  border-radius: 50%;
-  background: #fff;
-  animation: explode 1s ease-out forwards;
-}
-@keyframes explode {
-  to { transform: translate(var(--x), var(--y)); opacity: 0; }
-}
-
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Only You ❤️</title>
+<style>
+*{box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{margin:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ff758c,#ff7eb3)}
+.heart{position:fixed;top:-10px;color:rgba(255,0,90,.75);animation:fall linear infinite;pointer-events:none}
+@keyframes fall{to{transform:translateY(110vh)}}
+.card{background:rgba(255,255,255,.95);padding:34px 44px;border-radius:26px;text-align:center;box-shadow:0 30px 70px rgba(0,0,0,.3);max-width:460px;position:relative}
+.name{font-size:28px;font-weight:700;color:#ff3366;animation:glow 2s ease-in-out infinite alternate}
+@keyframes glow{from{text-shadow:0 0 10px #ff9abf}to{text-shadow:0 0 25px #ff3366}}
+.buttons{margin-top:30px;position:relative;height:120px}
+button{padding:14px 36px;border:none;border-radius:40px;font-size:18px;cursor:pointer;transition:.35s;position:absolute}
+#yes{background:#ff3366;color:#fff;left:50%;transform:translateX(-50%);z-index:5}
+#no{background:#aaa;color:#fff;left:50%;top:70px;transform:translateX(-50%);z-index:1}
+#gallery,#quiz{display:none;animation:fadeIn 1s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.slide img{width:100%;border-radius:18px;box-shadow:0 15px 35px rgba(0,0,0,.25)}
+.next-btn{margin-top:18px;padding:12px 28px;border:none;border-radius:30px;background:#ff3366;color:#fff;font-size:16px;cursor:pointer}
+.quiz-q{font-weight:600;margin-bottom:15px}
+.options button{display:block;position:static;width:100%;margin:8px 0;background:#ffd1dc;color:#333}
+.tease{color:#ff3366;font-size:14px;margin-top:8px}
+</style>
 </head>
-<body> <div class="card" id="question">
-    <h1 class="name">Only You ❤️</h1>
-    <p>
-      First of all Iam sorry kanda for all the mess! <br>
-      This heart of mine was made only for you…<br>
-      <b>Ee hrudaya ninnadhu matra 💗</b><br><br>
-      And you… you feel like the one my soul has been waiting for ✨
-    </p>
-    <h2>Will you be my Valentine? 💌</h2><div class="buttons">
-  <button id="yes">Yes 🥰</button>
-  <button id="no">No 🙈</button>
-</div>
+<body><div class="card" id="question">
+  <div class="name">Only You ❤️</div>
+  <p>This heart was made only for you 💗<br>Ee hrudaya ninnadhu matra</p>
+  <h2>Will you be my Valentine?</h2>
+  <div class="buttons">
+    <button id="yes">Yes 🥰</button>
+    <button id="no">No 🙈</button>
+  </div>
+</div><div class="card" id="gallery">
+  <h2>Our Little Story 💕</h2>
+  <div class="slide"><img id="slideImg" src=""></div>
+  <button class="next-btn" id="nextPhoto">Next ➜</button>
+</div><div class="card" id="quiz">
+  <h2>One Last Thing 😏</h2>
+  <div class="quiz-q" id="quizQ"></div>
+  <div class="options" id="options"></div>
+  <div class="tease" id="tease"></div>
+</div><audio id="music" src="your-music.mp3"></audio>
 
-  </div> <div class="card" id="gallery">
-    <h1>My Heart Chose You 💖</h1>
-    <p>
-      Nanna jeevana ninna hesarinda shuru agutte…<br>
-      You and me, only us 🌙✨
-    </p><img class="gif" src="cute.gif" />
+<script>
+/* hearts */
+setInterval(()=>{const h=document.createElement('div');h.className='heart';h.innerHTML='❤';h.style.left=Math.random()*100+'vw';h.style.fontSize=Math.random()*20+12+'px';h.style.animationDuration=Math.random()*3+4+'s';document.body.appendChild(h);setTimeout(()=>h.remove(),7000)},180);
 
-<div class="story" id="photos"></div>
+const noBtn=document.getElementById('no');
+const yesBtn=document.getElementById('yes');
+let scale=1;
+noBtn.onmouseenter=()=>{noBtn.style.transform=`translate(${Math.random()*260-130}px,${Math.random()*40+50}px)`;scale+=.18;yesBtn.style.transform=`translateX(-50%) scale(${scale})`};
 
-  </div> <!-- Replace with your song --><audio id="music" src="your-music.mp3"></audio>
+yesBtn.onclick=()=>{question.style.display='none';gallery.style.display='block';music.play();showPhoto()};
 
-  <script>
-    /* Heart rain */
-    setInterval(() => {
-      const h = document.createElement('div');
-      h.className = 'heart'; h.innerHTML = '❤';
-      h.style.left = Math.random() * 100 + 'vw';
-      h.style.fontSize = (Math.random() * 22 + 14) + 'px';
-      h.style.animationDuration = (Math.random() * 3 + 4) + 's';
-      document.body.appendChild(h);
-      setTimeout(() => h.remove(), 7000);
-    }, 160);
+/* Photos */
+const photos=['photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg','photo5.jpg'];
+let pIndex=0;
+function showPhoto(){slideImg.src=photos[pIndex]}
+nextPhoto.onclick=()=>{pIndex++;if(pIndex<photos.length){showPhoto()}else{gallery.style.display='none';quiz.style.display='block';showQ()}};
 
-    const noBtn = document.getElementById('no');
-    const yesBtn = document.getElementById('yes');
-    let scale = 1;
-
-    noBtn.addEventListener('mouseenter', () => {
-      const x = Math.random() * 260 - 130;
-      const y = Math.random() * 40 + 50;
-      noBtn.style.transform = `translate(${x}px, ${y}px)`;
-      noBtn.style.zIndex = 0;
-      scale += 0.2;
-      yesBtn.style.transform = `translateX(-50%) scale(${scale})`;
-    });
-
-    yesBtn.addEventListener('click', () => {
-      document.getElementById('question').style.display = 'none';
-      document.getElementById('gallery').style.display = 'block';
-      document.getElementById('music').play();
-      loadPhotos();
-      fireworks();
-    });
-
-    /* Add your own photos here */
-    const imageList = [
-      'photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg','photo5.jpg'
-    ];
-
-    function loadPhotos() {
-      const container = document.getElementById('photos');
-      imageList.forEach(src => {
-        const div = document.createElement('div');
-        div.className = 'story-item';
-        div.innerHTML = `<img src="${src}" />`;
-        container.appendChild(div);
-      });
-    }
-
-    function fireworks() {
-      for (let i = 0; i < 25; i++) {
-        const f = document.createElement('div');
-        f.className = 'firework';
-        f.style.left = '50%';
-        f.style.top = '50%';
-        f.style.setProperty('--x', `${Math.random()*400-200}px`);
-        f.style.setProperty('--y', `${Math.random()*400-200}px`);
-        document.body.appendChild(f);
-        setTimeout(() => f.remove(), 1000);
-      }
-    }
-  </script></body>
+/* Quiz */
+const quizData=[
+{q:'Who owns my heart completely? 💖',o:['Everyone','You','Me','Coffee'],a:1},
+{q:'Our vibe together feels like?',o:['Chaos','Magic ✨','Silence','Routine'],a:1},
+{q:'What am I most sure about?',o:['Weather','Traffic','Us 💕','Nothing'],a:2},
+{q:'When I see you, I feel?',o:['Calm','Happy','Home 🏡','Sleepy'],a:2},
+{q:'Forever means?',o:['Maybe','Until bored','You & Me 💍','Someday'],a:2}
+];
+let qIndex=0;
+function showQ(){quizQ.innerText=quizData[qIndex].q;options.innerHTML='';tease.innerText='';quizData[qIndex].o.forEach((opt,i)=>{const b=document.createElement('button');b.innerText=opt;b.onclick=()=>check(i);options.appendChild(b)})}
+function check(i){if(i===quizData[qIndex].a){qIndex++;if(qIndex<quizData.length){showQ()}else{quiz.innerHTML='<h2>You chose right… always ❤️</h2><p>Because you are the answer to everything 💖</p>'}}else{tease.innerText='Nooo 😝 try again… you know this one'}}
+</script></body>
 </html>
