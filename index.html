@@ -2,122 +2,201 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Will You Be My Valentine? ❤️</title>
+  <title>Only You ❤️</title>
   <style>
     * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
     body {
       margin: 0; height: 100vh; overflow: hidden;
       display: flex; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
     }/* Heart rain */
 .heart {
   position: fixed; top: -10px;
-  color: rgba(255, 0, 80, 0.7);
+  color: rgba(255, 0, 90, 0.75);
   animation: fall linear infinite;
+  pointer-events: none;
 }
-@keyframes fall {
-  to { transform: translateY(110vh); }
-}
+@keyframes fall { to { transform: translateY(110vh); } }
 
 .card {
-  background: rgba(255,255,255,0.9);
-  padding: 30px 40px;
-  border-radius: 20px;
+  background: rgba(255,255,255,0.94);
+  padding: 34px 44px;
+  border-radius: 26px;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  max-width: 420px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.3);
+  max-width: 460px;
+  position: relative;
+  z-index: 2;
 }
 
-h1 { color: #e6005c; }
-p { color: #444; }
+h1 { color: #e6005c; margin-bottom: 10px; }
+h2 { color: #ff3366; }
+p { color: #444; line-height: 1.5; }
 
-.buttons { margin-top: 25px; position: relative; height: 80px; }
+.name {
+  font-size: 28px;
+  font-weight: 700;
+  color: #ff3366;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff9abf; }
+  to { text-shadow: 0 0 25px #ff3366; }
+}
+
+.buttons { margin-top: 30px; position: relative; height: 120px; }
 button {
-  padding: 12px 28px;
-  border: none; border-radius: 30px;
-  font-size: 16px; cursor: pointer;
-  transition: all 0.3s ease;
+  padding: 15px 36px;
+  border: none; border-radius: 40px;
+  font-size: 18px; cursor: pointer;
+  transition: all 0.35s ease;
   position: absolute;
 }
 #yes {
-  background: #e6005c; color: white; left: 80px;
+  background: #ff3366; color: white;
+  left: 50%; transform: translateX(-50%);
+  z-index: 5;
 }
 #no {
-  background: #999; color: white; right: 80px;
+  background: #aaa; color: white;
+  left: 50%; top: 70px;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
-/* Gallery */
+/* Gallery / Story */
 #gallery {
   display: none; text-align: center;
+  animation: fadeIn 1.2s ease;
 }
-#gallery img {
-  width: 100%; border-radius: 16px; margin-top: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+@keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
+.story {
+  display: flex;
+  overflow-x: auto;
+  gap: 18px;
+  padding: 10px;
+  scroll-snap-type: x mandatory;
+}
+
+.story-item {
+  min-width: 260px;
+  background: white;
+  border-radius: 22px;
+  padding: 12px;
+  scroll-snap-align: center;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.story-item img {
+  width: 100%; border-radius: 16px;
+}
+
+.gif {
+  width: 180px;
+  margin: 20px auto;
+}
+
+.firework {
+  position: fixed;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  animation: explode 1s ease-out forwards;
+}
+@keyframes explode {
+  to { transform: translate(var(--x), var(--y)); opacity: 0; }
 }
 
   </style>
 </head>
 <body> <div class="card" id="question">
-    <h1>Hey You ❤️</h1>
-    <p>You make my days brighter, my smiles wider, and my heart happier.
-       So I have just one question…</p>
+    <h1 class="name">Only You ❤️</h1>
+    <p>
+      This heart of mine was made only for you…<br>
+      <b>Ee hrudaya ninnadhu matra 💗</b><br><br>
+      And you… you feel like the one my soul has been waiting for ✨
+    </p>
     <h2>Will you be my Valentine? 💌</h2><div class="buttons">
   <button id="yes">Yes 🥰</button>
   <button id="no">No 🙈</button>
 </div>
 
   </div> <div class="card" id="gallery">
-    <h1>Yayyyy 💖</h1>
-    <p>You just made this Valentine’s Day perfect ✨</p>
-    <img id="slide" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" />
-  </div><audio id="music" src="https://www.youtube.com/watch?v=4Bsc2uI_LsM&list=RD4Bsc2uI_LsM&start_radio=1"></audio>
+    <h1>My Heart Chose You 💖</h1>
+    <p>
+      Nanna jeevana ninna hesarinda shuru agutte…<br>
+      You and me, only us 🌙✨
+    </p><img class="gif" src="cute.gif" />
+
+<div class="story" id="photos"></div>
+
+  </div> <!-- Replace with your song --><audio id="music" src="your-music.mp3"></audio>
 
   <script>
-    // Heart rain
+    /* Heart rain */
     setInterval(() => {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.innerHTML = '❤';
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
-    }, 200);
+      const h = document.createElement('div');
+      h.className = 'heart'; h.innerHTML = '❤';
+      h.style.left = Math.random() * 100 + 'vw';
+      h.style.fontSize = (Math.random() * 22 + 14) + 'px';
+      h.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      document.body.appendChild(h);
+      setTimeout(() => h.remove(), 7000);
+    }, 160);
 
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
-
     let scale = 1;
-    noBtn.addEventListener('mouseover', () => {
-      noBtn.style.top = Math.random() * 50 + 'px';
-      noBtn.style.left = Math.random() * 200 + 'px';
-      scale += 0.15;
-      yesBtn.style.transform = `scale(${scale})`;
+
+    noBtn.addEventListener('mouseenter', () => {
+      const x = Math.random() * 260 - 130;
+      const y = Math.random() * 40 + 50;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+      noBtn.style.zIndex = 0;
+      scale += 0.2;
+      yesBtn.style.transform = `translateX(-50%) scale(${scale})`;
     });
 
     yesBtn.addEventListener('click', () => {
       document.getElementById('question').style.display = 'none';
       document.getElementById('gallery').style.display = 'block';
       document.getElementById('music').play();
-      startSlideshow();
+      loadPhotos();
+      fireworks();
     });
 
-    const images = [
-      'https://images.unsplash.com/photo-1517841905240-472988babdf9',
-      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e',
-      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1',
-      'https://images.unsplash.com/photo-1511988617509-a57c8a288659',
-      'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce'
-      
+    /* Add your own photos here */
+    const imageList = [
+      'photo1.jpg','photo2.jpg','photo3.jpg','photo4.jpg','photo5.jpg'
     ];
 
-    let index = 0;
-    function startSlideshow() {
-      setInterval(() => {
-        index = (index + 1) % images.length;
-        document.getElementById('slide').src = images[index];
-      }, 3000);
+    function loadPhotos() {
+      const container = document.getElementById('photos');
+      imageList.forEach(src => {
+        const div = document.createElement('div');
+        div.className = 'story-item';
+        div.innerHTML = `<img src="${src}" />`;
+        container.appendChild(div);
+      });
+    }
+
+    function fireworks() {
+      for (let i = 0; i < 25; i++) {
+        const f = document.createElement('div');
+        f.className = 'firework';
+        f.style.left = '50%';
+        f.style.top = '50%';
+        f.style.setProperty('--x', `${Math.random()*400-200}px`);
+        f.style.setProperty('--y', `${Math.random()*400-200}px`);
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), 1000);
+      }
     }
   </script></body>
 </html>
