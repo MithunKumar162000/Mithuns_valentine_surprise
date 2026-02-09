@@ -1,0 +1,122 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine? ❤️</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+    body {
+      margin: 0; height: 100vh; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    }/* Heart rain */
+.heart {
+  position: fixed; top: -10px;
+  color: rgba(255, 0, 80, 0.7);
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
+
+.card {
+  background: rgba(255,255,255,0.9);
+  padding: 30px 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  max-width: 420px;
+}
+
+h1 { color: #e6005c; }
+p { color: #444; }
+
+.buttons { margin-top: 25px; position: relative; height: 80px; }
+button {
+  padding: 12px 28px;
+  border: none; border-radius: 30px;
+  font-size: 16px; cursor: pointer;
+  transition: all 0.3s ease;
+  position: absolute;
+}
+#yes {
+  background: #e6005c; color: white; left: 80px;
+}
+#no {
+  background: #999; color: white; right: 80px;
+}
+
+/* Gallery */
+#gallery {
+  display: none; text-align: center;
+}
+#gallery img {
+  width: 100%; border-radius: 16px; margin-top: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+  </style>
+</head>
+<body> <div class="card" id="question">
+    <h1>Hey You ❤️</h1>
+    <p>You make my days brighter, my smiles wider, and my heart happier.
+       So I have just one question…</p>
+    <h2>Will you be my Valentine? 💌</h2><div class="buttons">
+  <button id="yes">Yes 🥰</button>
+  <button id="no">No 🙈</button>
+</div>
+
+  </div> <div class="card" id="gallery">
+    <h1>Yayyyy 💖</h1>
+    <p>You just made this Valentine’s Day perfect ✨</p>
+    <img id="slide" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e" />
+  </div><audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+  <script>
+    // Heart rain
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 200);
+
+    const noBtn = document.getElementById('no');
+    const yesBtn = document.getElementById('yes');
+
+    let scale = 1;
+    noBtn.addEventListener('mouseover', () => {
+      noBtn.style.top = Math.random() * 50 + 'px';
+      noBtn.style.left = Math.random() * 200 + 'px';
+      scale += 0.15;
+      yesBtn.style.transform = `scale(${scale})`;
+    });
+
+    yesBtn.addEventListener('click', () => {
+      document.getElementById('question').style.display = 'none';
+      document.getElementById('gallery').style.display = 'block';
+      document.getElementById('music').play();
+      startSlideshow();
+    });
+
+    const images = [
+      'https://images.unsplash.com/photo-1517841905240-472988babdf9',
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1',
+      'https://images.unsplash.com/photo-1511988617509-a57c8a288659',
+      'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce'
+    ];
+
+    let index = 0;
+    function startSlideshow() {
+      setInterval(() => {
+        index = (index + 1) % images.length;
+        document.getElementById('slide').src = images[index];
+      }, 3000);
+    }
+  </script></body>
+</html>
