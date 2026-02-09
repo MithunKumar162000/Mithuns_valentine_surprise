@@ -55,7 +55,7 @@ noBtn.onmouseenter=()=>{noBtn.style.transform=`translate(${Math.random()*260-130
 yesBtn.onclick=()=>{question.style.display='none';gallery.style.display='block';music.play();showPhoto()};
 
 /* Photos */
-const photos=['photo1.jpeg','photo2.jpg','photo3.jpg','photo4.jpg','photo5.jpg'];
+const photos=['photo1.jpeg'];
 let pIndex=0;
 function showPhoto(){slideImg.src=photos[pIndex]}
 nextPhoto.onclick=()=>{pIndex++;if(pIndex<photos.length){showPhoto()}else{gallery.style.display='none';quiz.style.display='block';showQ()}};
